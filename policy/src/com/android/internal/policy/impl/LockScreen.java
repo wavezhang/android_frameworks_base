@@ -507,6 +507,20 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
             }
         });
 
+        mRewindIcon.setOnLongClickListener(new View.OnClickListener() {
+            public void onLongClick(View v) {
+                mCallback.pokeWakelock();
+                sendMediaButtonEvent(KeyEvent.KEYCODE_MEDIA_REWIND);
+            }
+        });
+
+        mForwardIcon.setOnLongClickListener(new View.OnClickListener() {
+            public void onLongClick(View v) {
+                mCallback.pokeWakelock();
+                sendMediaButtonEvent(KeyEvent.KEYCODE_MEDIA_FAST_FORWARD);
+            }
+        });
+
         mAlbumArt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent musicIntent = new Intent(Intent.ACTION_VIEW);
